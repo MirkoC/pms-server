@@ -11,8 +11,7 @@
         
         <!-- build:css assets/styles/vendors.css -->
         <!-- bower:css -->
-        <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-        <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css" />
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
         <!-- endbower -->
         <!-- endbuild -->
         
@@ -23,16 +22,22 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div id="app"></div>
+        <div id="app">
+
+            <!--<div id="input"></div>
+            <div id="output"></div>-->
+
+        </div>
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
+        <script src="bower_components/es5-shim/es5-shim.js"></script>
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <script src="bower_components/Cookies/dist/cookies.js"></script>
         <script src="bower_components/moment/moment.js"></script>
-        <script src="bower_components/es5-shim/es5-shim.js"></script>
         <script src="bower_components/es6-shim/es6-shim.js"></script>
+        <script src="bower_components/lodash/lodash.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
         <script type="text/javascript" src="scripts/app.js"></script>
