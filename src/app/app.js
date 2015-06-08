@@ -11,6 +11,10 @@ var state = {
             ]
     },
 
+    newUser: function() {
+        this.data.people.push({first: "", last: ""});
+    },
+
     __evHandlers : {},
 
     on : function(evName, fn) {
@@ -30,31 +34,71 @@ var state = {
     }
 }
 
+/*
+    Gets the selected "Edit Name" row
+*/
 state.on("selectUser", function(k) {
     
-    console.log("Selected Index: ", k);
-    console.log(this.data.people[k].first, this.data.people[k].last);
+    console.log("Selected Index:", k);
+    console.log("Name:", this.data.people[k].first, this.data.people[k].last);
 
+    // Save the selected index inside the object as "currentPerson"
     this.data.currentPerson = k;
-
     this.trigger("change");
 });
 
-state.on("inputChange", function(part) {
+/*
+    Changes the state of the selected person
+*/
+state.on("inputChange", function(part, ev) {
 
-    console.log(part);
+    // Gets the selected user index from the object
+    var k = state.data.currentPerson;
+    
+    if(typeof k !== 'undefined') {
 
-    // State change
-
-    this.trigger("changeListener");
+        // State of "k" (ex: 0 or 1 or 2) and "part" (ex: "first" or "last") of the "k"
+        // object is set as the input field value
+        state.data.people[k][part] = ev.target.value;
+        state.trigger("change");
+    }
 });
 
-state.on("changeListener", function() {
-
-    // Do something.
-
+/*
+    Remove the currentPerson from the object,
+    hiding the <Input> and <Output> components
+*/
+state.on("deselectUser", function(k) {
+    delete this.data.currentPerson;
+    this.trigger("change");
 });
 
+/*
+    Add a new (empty) user into the object
+*/
+state.on("newUser", function(k) {
+
+    state.newUser();
+
+    var last = state.data.people.length - 1;
+
+    state.data.currentPerson = last;
+    this.trigger("change");
+});
+
+/*
+    Delete the selected person from the object
+*/
+state.on("deleteUser", function(k) {
+
+    delete state.data.currentPerson;
+    state.data.people.splice(k, 1);
+    this.trigger("change");
+});
+
+/*
+    Returns the "k" object out of state array
+*/
 var getCurrentPerson = function() {
     
     var k = state.data.currentPerson;
@@ -64,10 +108,13 @@ var getCurrentPerson = function() {
     }
 }
 
+/*
+    Returns a function that triggers "inputChange" event
+*/
 var assignNamePart = function(part) {
 
-    return function() {
-        state.trigger("inputChange", [part]);
+    return function(ev) {
+        state.trigger("inputChange", [part, ev]);
     }
 }
 
@@ -87,6 +134,7 @@ var App = React.createClass({
     render: function() {
         return (
             <div>
+                <button onClick={this.addUser}>Add User</button>
                 <Table dataObj={this.state.data.people}/>
                 {this.renderForm()}
             </div>
@@ -105,6 +153,9 @@ var App = React.createClass({
         }
     },
 
+    /*
+        Prints the full name into the <Output>
+    */
     getName: function() {
 
         var first = this.state.data.people[this.state.data.currentPerson].first;
@@ -119,6 +170,13 @@ var App = React.createClass({
         } else {
             return "Name: " + first + " " + last;
         }
+    },
+
+    /*
+        Calls the "newUser" event
+    */
+    addUser: function() {
+        state.trigger("newUser");
     }
 });
 
@@ -141,10 +199,11 @@ var Table = React.createClass({
                       return (
                         <tr key={i}>
                           {_.map(row, function(v, k) {
-                            return <td key={k}>{v}</td>;
+                            return <td key={k} className={self.highlight(i)}>{v}</td>;
                           })}
 
                           <td><button onClick={self.makeSelectUser(i)}>Edit Name</button></td>
+                          <td><button onClick={self.deleteSelectUser(i)}>Delete User</button></td>
                         </tr>
                       );
                     })}
@@ -154,9 +213,31 @@ var Table = React.createClass({
         );
     },
 
-    makeSelectUser: function(k){
-        return function(){
+    /*
+        Call the "selectUser" event, passing the current row value
+    */
+    makeSelectUser: function(k) {
+        return function() {
             state.trigger('selectUser', [k]);
+        }
+    },
+
+    /*
+        Call the "deleteSelectUser" event, passing the current row value
+    */
+    deleteSelectUser: function(k) {
+        return function() {
+            state.trigger('deleteUser', [k]);
+        }
+    },
+
+    /*
+        Highlight the field that is being edited by
+        assigning a CSS class to that row
+    */
+    highlight: function(i) {
+        if(state.data.currentPerson === i) {
+            return "active";
         }
     }
 });
@@ -168,8 +249,16 @@ var Input = React.createClass({
             <div>
                 <input type="text" placeholder="Your First Name" value={this.props.firstName} onChange={assignNamePart("first")}/>
                 <input type="text" placeholder="Your Last Name" value={this.props.lastName} onChange={assignNamePart("last")}/>
+                <button onClick={this.closeForm}>X</button>
             </div>
         );
+    },
+
+    /*
+        Call the "deselectUser" event
+    */
+    closeForm: function() {
+        state.trigger("deselectUser");
     }
 });
 
