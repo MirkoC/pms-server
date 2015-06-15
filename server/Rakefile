@@ -33,10 +33,11 @@ namespace :db do
   task :seed do |t, args|
     require 'sequel'
     require 'db/initial_seed'
+    time = Time.now
     puts 'Seeding into database'
     db = Sequel.connect('postgres://pms:fp123@localhost/pms_dev')
     ContactsSeeder.new.seed.each do |cnt|
-      db[cnt.table_name].insert(cnt.to_hash)
+      db[cnt.table_name].insert(cnt.to_hash.merge({:created_at => time, :updated_at => time}))
     end
   end
 end

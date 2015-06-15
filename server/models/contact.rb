@@ -7,24 +7,29 @@ class Contact
     self.class.name.downcase.pluralize.to_sym
   end
 
-  def initialize(name, street_address, city, state, country, postal_code, created_at = nil, updated_at = nil)
+  def initialize(name, street_address, city, state, country, postal_code, id = nil)
     @name = name
     @street_address = street_address
     @city = city
     @state = state
     @country = country
     @postal_code = postal_code
-    @created_at = created_at || Time.now
-    @updated_at = updated_at || Time.now
-    @id = nil
+    @id = id
   end
 
 
   attr_reader :name, :street_address, :city, :state, :country, :postal_code, :id
-  attr_writer :updated_at
 
-  def to_json
-    {name: @name, street_address: @street_address, city: @city, state: @state, country: @country, postal_code: @postal_code}.to_json
+  def ==(other)
+    other.class == self.class && other.state == self.state
+  end
+
+  def state
+    self.instance_variables.map { |var| self.instance_variable_get var }
+  end
+
+  def to_json(args = nil)
+    {name: @name, street_address: @street_address, city: @city, state: @state, country: @country, postal_code: @postal_code, id: @id}.to_json
   end
 
   def to_hash

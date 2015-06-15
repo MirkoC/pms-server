@@ -1,6 +1,7 @@
 require 'models'
 require 'sequel'
 
+
 class ContactsSeeder
   def seed
     contacts ||= []

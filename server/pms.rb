@@ -17,7 +17,7 @@ $contact_rep = ContactRepository.new(db)
 
 class Pms < Roda
   plugin :all_verbs
-  plugin :json, :classes=>[Array, Hash, Person]
+  plugin :json, :classes=>[Array, Hash, Contact]
 
   route do |r|
     r.root do
@@ -25,30 +25,29 @@ class Pms < Roda
     end
     # /people branch
     r.on 'api' do
-      r.on 'contact' do
+      r.on 'contacts' do
         r.is do
-          ############## GET /contact ##############
+          ############## GET /contacts ##############
           r.get do
             $contact_rep.get_all
           end
-          ############## PUT /contact ##############
-          r.put do
-            $contact_rep.update(Contact.new(r['name'], r['street_address'], r['city'], r['state'], r['country'], r['postal_code'], nil,
-                                     Time.now), r['id'])
-            r['id']
+          ############## POST /contacts ##############
+          r.post do
+            contact = Contact.new(r['name'], r['street_address'], r['city'], r['state'], r['country'], r['postal_code'])
+            $contact_rep.create(contact)
           end
         end
-        ############## POST /contact/new ##############
-        r.post 'new' do
-          c = Contact.new(r['name'], r['street_address'], r['city'], r['state'], r['country'], r['postal_code'], Time.now,
-                          Time.now)
-          $contact_rep.create(c)
+        ############## PUT /contacts/:id ##############
+        r.put ':id' do |id|
+          contact = Contact.new(r['name'], r['street_address'], r['city'], r['state'], r['country'], r['postal_code'], id)
+          $contact_rep.update(contact, id)
+          contact
         end
-        ############## GET /contact/id ##############
+        ############## GET /contacts/:id ##############
         r.get ':id' do |id|
           $contact_rep.get_by_id(id)
         end
-        ############## DELETE /contact/id ##############
+        ############## DELETE /contacts/:id ##############
         r.delete ':id' do |id|
           $contact_rep.delete(id)
         end
