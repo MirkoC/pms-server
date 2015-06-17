@@ -5,9 +5,10 @@ namespace :db do
   task :migrate, [:version] do |t, args|
     require 'sequel'
     Sequel.extension :migration
-    db = Sequel.connect('postgres://pms:fp123@localhost/pms_dev')
+
+    db = Sequel.connect("postgres://pms:fp123@localhost/pms_#{ENV['ENV']}")
     if args[:version]
-      puts 'Migrating to version #{args[:version]}'
+      puts "Migrating to version #{args[:version]}"
       Sequel::Migrator.run(db, 'db/migrations', target: args[:version].to_i)
     else
       puts 'Migrating to latest'
@@ -18,7 +19,7 @@ namespace :db do
   task :rollback, :target do |t, args|
     require 'sequel'
     Sequel.extension :migration
-    db = Sequel.connect('postgres://pms:fp123@localhost/pms_dev')
+    db = Sequel.connect("postgres://pms:fp123@localhost/pms_#{ENV['ENV']}")
     if args[:version]
       version = args[:version].to_i
       puts "Migrating to version #{args[:version]}"
@@ -35,7 +36,7 @@ namespace :db do
     require 'db/initial_seed'
     time = Time.now
     puts 'Seeding into database'
-    db = Sequel.connect('postgres://pms:fp123@localhost/pms_dev')
+    db = Sequel.connect("postgres://pms:fp123@localhost/pms_#{ENV['ENV']}")
     ContactsSeeder.new.seed.each do |cnt|
       db[cnt.table_name].insert(cnt.to_hash.merge({:created_at => time, :updated_at => time}))
     end

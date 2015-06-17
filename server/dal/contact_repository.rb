@@ -3,16 +3,16 @@ require 'sequel'
 require 'models/contact'
 require 'byebug'
 
-
 class ContactRepository
 
   def initialize(db)
     @contacts_table = db[:contacts]
   end
 
-  def create(object)
+  def create(contact)
     time = Time.now
-    @contacts_table.insert(object.to_hash.merge({:created_at => time, :updated_at => time}))
+    id = @contacts_table.insert(contact.to_hash.merge({:created_at => time, :updated_at => time}))
+    Contact.new(*contact.to_hash.merge({:id => id}).values)
   end
 
   def delete(id)

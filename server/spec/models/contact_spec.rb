@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'models'
 require 'byebug'
 
-RSpec.describe Contact do
+describe Contact do
 
   describe '#state' do
     it 'converts the object attribute values to an array (not included attributes are created_at and updated_at)' do
@@ -24,7 +24,7 @@ RSpec.describe Contact do
       contact = Contact.new('Nikica Jokić',  'Mladost 3', 'Zagreb', 'Grad Zagreb', 'Hrvatska', '10000')
       expect(contact.to_hash).to eq({name: 'Nikica Jokić', street_address: 'Mladost 3', city: 'Zagreb',
                                      state: 'Grad Zagreb', country: 'Hrvatska', postal_code: '10000'})
-    end
+      end
   end
 
   describe '#table_name' do

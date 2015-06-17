@@ -6,7 +6,7 @@ require 'bundler'
 Bundler.require
 require 'json'
 require 'models'
-require 'repository'
+require 'repositories'
 require 'pry'
 require 'pg'
 require 'byebug'
