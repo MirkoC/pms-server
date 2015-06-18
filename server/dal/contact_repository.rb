@@ -25,12 +25,12 @@ class ContactRepository
 
   def get_by_id(id)
     c = @contacts_table.where(:id => id).first
-    Contact.new(c[:name], c[:street_address],  c[:city], c[:state], c[:country], c[:postal_code], c[:id])
+    Contact.new(c[:name], c[:street_address],  c[:city], c[:state], c[:country], c[:postal_code], c[:email], c[:phone], c[:id])
   end
 
   def get_all
     @contacts_table.select(:a).select_all.map do |c|
-      Contact.new(c[:name], c[:street_address],  c[:city], c[:state], c[:country], c[:postal_code], c[:id])
+      Contact.new(c[:name], c[:street_address],  c[:city], c[:state], c[:country], c[:postal_code], c[:email], c[:phone], c[:id])
     end
   end
 

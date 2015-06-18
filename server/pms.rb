@@ -33,13 +33,15 @@ class Pms < Roda
           end
           ############## POST /contacts ##############
           r.post do
-            contact = Contact.new(r['name'], r['street_address'], r['city'], r['state'], r['country'], r['postal_code'])
+            contact = Contact.new(r['name'], r['street_address'], r['city'], r['state'], r['country'],
+                                  r['postal_code'], r['email'], r['phone'])
             $contact_rep.create(contact)
           end
         end
         ############## PUT /contacts/:id ##############
         r.put ':id' do |id|
-          contact = Contact.new(r['name'], r['street_address'], r['city'], r['state'], r['country'], r['postal_code'], id)
+          contact = Contact.new(r['name'], r['street_address'], r['city'], r['state'], r['country'], r['postal_code'],
+                                r['postal_code'], r['email'], id)
           $contact_rep.update(contact, id)
           contact
         end

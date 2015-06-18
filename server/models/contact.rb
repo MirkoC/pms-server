@@ -7,18 +7,20 @@ class Contact
     self.class.name.downcase.pluralize.to_sym
   end
 
-  def initialize(name, street_address, city, state, country, postal_code, id = nil)
+  def initialize(name, street_address, city, state, country, postal_code, email, phone, id = nil)
     @name = name
     @street_address = street_address
     @city = city
     @state = state
     @country = country
     @postal_code = postal_code
+    @email = email
+    @phone = phone
     @id = id
   end
 
 
-  attr_reader :name, :street_address, :city, :state, :country, :postal_code, :id
+  attr_reader :name, :street_address, :city, :state, :country, :postal_code, :email, :phone, :id
 
   def ==(other)
     other.class == self.class && other.state == self.state
@@ -29,7 +31,8 @@ class Contact
   end
 
   def to_json(args = nil)
-    {name: @name, street_address: @street_address, city: @city, state: @state, country: @country, postal_code: @postal_code, id: @id}.to_json
+    {name: @name, street_address: @street_address, city: @city, state: @state, country: @country,
+     postal_code: @postal_code, id: @id, email: @email, phone: @phone}.to_json
   end
 
   def to_hash
