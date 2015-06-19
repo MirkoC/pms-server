@@ -10,4 +10,5 @@ node_modules/
 /dist
 client/src/bower_components/
 
+.idea
 server/.bundle/ruby/
