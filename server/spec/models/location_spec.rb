@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'models'
-require 'byebug'
 
 
 describe Location do
@@ -8,7 +7,7 @@ describe Location do
   before(:each) do
     location_hash = {:name => 'Ivanić lokacija', :street_address => 'Ulica 23', :city => 'Ivanić grad',
                      :state => 'Varaždinska županija', :region => 'Međimurje i Podravina', :country => 'Hrvatska',
-                     :postal_code => '14000', :surfaces => nil, :type => {:type=>'gas station', :id => nil}, :id => nil}
+                     :postal_code => '14000', :surfaces => nil, :type => LocationType.new({:type=>'gas station', :id => nil}), :id => nil}
     @location = Location.new(location_hash)
   end
 
