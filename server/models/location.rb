@@ -3,10 +3,6 @@
 
 class Location
 
-  def table_name
-    self.class.name.downcase.pluralize.to_sym
-  end
-
   def initialize(location_hash)
     @name, @street_address, @city, @state, @region, @country, @postal_code, @surfaces, @id =
         location_hash.values_at(:name, :street_address, :city, :state, :region, :country, :postal_code, :surfaces, :id )

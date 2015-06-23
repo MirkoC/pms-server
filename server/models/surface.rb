@@ -2,22 +2,19 @@
 
 class Surface
 
-  def table_name
-    self.class.name.downcase.pluralize.to_sym
-  end
-
-  def initialize(surface_hash, id = nil, posting_orders = nil)
-    @location, @price, @height, @line = surface_hash.values_at(:location, :price, :height, :line)
-    @posting_orders = [] || posting_orders
-    if posting_orders
-      @active_posting_order = posting_orders[-1]
+  def initialize(surface_hash)
+    @location, @price, @height, @line, @posting_orders, @id = surface_hash.values_at(:location, :price, :height, :line,
+                                                                                     :posting_orders, :id)
+    if surface_hash[:posting_orders]
+      @active_posting_order = surface_hash[:posting_orders][-1]
     else
       @active_posting_order = nil
     end
-    @id = id
+    @posting_orders = surface_hash[:posting_orders] || []
   end
 
-  def new_posting_order(posting_order)
+  def issue_posting_order(posting_order)
+    posting_order.set_surface_and_location(self, @location)
     @posting_orders.push(posting_order)
     @active_posting_order = posting_order
   end
