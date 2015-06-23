@@ -6,7 +6,8 @@ describe Surface do
 
   before(:each) do
     time = Time.now
-    surface_hash = {:location => nil, :price => '100kn', :height => '4', :line => '2', :posting_orders => nil, :id => nil}
+    surface_hash = {:location => nil, :price => '100kn', :height => '4', :line => '2', :posting_orders => nil,
+                    :type => {:type => 'billboard', :id => nil}, :id => nil}
     @surface = Surface.new(surface_hash)
     posting_order_hash = {:name => 'First posting order for Ivanić surface', :surface => nil, :location => nil,
                           :issue_date => time, :state => 'not yet issued', :id => nil}

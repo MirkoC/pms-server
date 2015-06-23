@@ -4,8 +4,8 @@
 class Location
 
   def initialize(location_hash)
-    @name, @street_address, @city, @state, @region, @country, @postal_code, @surfaces, @id =
-        location_hash.values_at(:name, :street_address, :city, :state, :region, :country, :postal_code, :surfaces, :id )
+    @name, @street_address, @city, @state, @region, @country, @postal_code, @surfaces, @type, @id =
+        location_hash.values_at(:name, :street_address, :city, :state, :region, :country, :postal_code, :surfaces, :type, :id )
     if @surfaces == nil
       @surfaces ||= []
     end
