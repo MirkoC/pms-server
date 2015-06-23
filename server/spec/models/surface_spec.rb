@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'models'
-require 'byebug'
 
 describe Surface do
 
