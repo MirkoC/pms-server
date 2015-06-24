@@ -20,7 +20,8 @@ describe PostingOrder do
 
   describe '#set_surface_and_location' do
     it 'sets surface and location for posting order' do
-      surface_hash = {:location => nil, :price => '100kn', :height => '4', :line => '2', :posting_orders => nil, :id => nil}
+      surface_hash = {:location => nil, :price => '100kn', :posting_orders => nil,
+                      :type => SurfaceType.new({:type => 'billboard', :id => nil}), :surface_no=> 'SRF01', :id => nil}
       @surface = Surface.new(surface_hash)
       location_hash = {:name => 'Ivanić lokacija', :street_address => 'Ulica 23', :city => 'Ivanić grad',
                        :state => 'Varaždinska županija', :region => 'Međimurje i Podravina', :country => 'Hrvatska',

@@ -3,8 +3,8 @@
 class Surface
 
   def initialize(surface_hash)
-    @location, @price, @height, @line, @posting_orders, @type, @id = surface_hash.values_at(:location, :price, :height, :line,
-                                                                                     :posting_orders, :type, :id)
+    @location, @price, @posting_orders, @type, @id =
+        surface_hash.values_at(:location, :price, :posting_orders, :type, :surface_no, :id)
     if surface_hash[:posting_orders]
       @active_posting_order = surface_hash[:posting_orders][-1]
     else

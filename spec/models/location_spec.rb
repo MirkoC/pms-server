@@ -23,7 +23,8 @@ describe Location do
 
   describe '#remove_surface' do
     it 'removes given surface from surface array' do
-      surface_hash = {:location => nil, :price => '100kn', :height => '4', :line => '2'}
+      surface_hash = {:location => nil, :price => '100kn', :posting_orders => nil,
+                      :type => SurfaceType.new({:type => 'billboard', :id => nil}), :surface_no=> 'SRF01', :id => nil}
       surface = Surface.new(surface_hash)
       @location.add_new_surface(surface)
       @location.remove_surface(surface)
