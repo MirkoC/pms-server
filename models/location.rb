@@ -19,6 +19,6 @@ class Location
     @surfaces.delete(surface)
   end
 
-  attr_reader :name, :street_address, :city, :state, :region, :country, :postal_code, :surfaces, :id
+  attr_reader :name, :street_address, :city, :state, :region, :country, :postal_code, :surfaces, :type, :id
 
 end
