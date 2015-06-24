@@ -11,4 +11,4 @@ node_modules/
 client/src/bower_components/
 
 .idea
-server/.bundle/ruby/
+.bundle/ruby/
