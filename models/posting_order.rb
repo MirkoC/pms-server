@@ -3,8 +3,8 @@
 class PostingOrder
 
   def initialize(posting_order_hash)
-    @name, @surface, @location, @issue_date, @state, @id = posting_order_hash.values_at(:name, :surface, :location,
-                                                                                        :issue_date, :state, :id)
+    @surface, @issue_date, @state, @posting_order_no, @id =
+        posting_order_hash.values_at(:surface, :issue_date, :state, :posting_order_no, :id)
   end
 
   def set_surface_and_location(surface, location)

@@ -6,6 +6,7 @@ require 'rspec'
 require 'pry'
 require 'byebug'
 require 'sequel'
+require 'models'
 
 RSpec.configure do |c|
   c.around(:each) do |example|

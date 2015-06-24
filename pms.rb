@@ -23,8 +23,8 @@ class Pms < Roda
     r.root do
       #response['Content-Type'] = 'application/json'
     end
-    # /people branch
     r.on 'api' do
+      # /contacts branch
       r.on 'contacts' do
         r.is do
           ############## GET /contacts ##############
@@ -53,6 +53,10 @@ class Pms < Roda
         r.delete ':id' do |id|
           $contact_rep.delete(id)
         end
+      end
+      # /surfaces branch
+      r.on 'surfaces' do
+
       end
     end
   end
