@@ -17,7 +17,6 @@ describe Surface do
     it 'adds posting order to the array of posting orders in Surface model' do
       @surface.issue_posting_order(@posting_order)
       expect(@posting_order.surface).to eq(@surface)
-      expect(@posting_order.location).to eq(@surface.location)
       expect(@surface.posting_orders).to eq([@posting_order])
       expect(@surface.active_posting_order).to eq(@posting_order)
     end

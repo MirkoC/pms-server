@@ -3,21 +3,22 @@ $LOAD_PATH.unshift File.dirname(__FILE__)
 require 'rubygems'
 require 'bundler'
 
-Bundler.require
+require 'bundler/setup'
 require 'json'
 require 'models'
-require 'repositories'
 require 'pry'
 require 'pg'
 require 'byebug'
+require 'representers'
+require 'sequel'
+require 'roda'
 
 db = Sequel.postgres('pms_dev', :user => 'pms', :password => 'fp123', :host => 'localhost')
 
-$contact_rep = ContactRepository.new(db)
 
 class Pms < Roda
   plugin :all_verbs
-  plugin :json, :classes=>[Array, Hash, Contact]
+  plugin :json, :classes=>[Array, Hash, Contact, SurfaceRepresenter]
 
   route do |r|
     r.root do
@@ -56,7 +57,32 @@ class Pms < Roda
       end
       # /surfaces branch
       r.on 'surfaces' do
+        r.is do
+          ############## GET /surfaces ##############
+          r.get do
+            surface = Surface.new(surface_hash = {:location => nil, :price => '100kn', :posting_orders => nil,
+                                        :type => SurfaceType.new({:name => 'billboard', :id => nil}),
+                                        :surface_no=> 'SRF01', :id => nil})
+            SurfaceRepresenter.new(surface)
 
+          end
+          ############## POST /surfaces ##############
+          r.post do
+
+          end
+        end
+        ############## PUT /surfaces/:id ##############
+        r.put ':id' do
+
+        end
+        ############## GET /surfaces/:id ##############
+        r.get ':id' do
+
+        end
+        ############## DELETE /surfaces/:id ##############
+        r.delete ':id' do
+
+        end
       end
     end
   end

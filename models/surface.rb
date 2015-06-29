@@ -14,7 +14,7 @@ class Surface
   end
 
   def issue_posting_order(posting_order)
-    posting_order.set_surface_and_location(self, @location)
+    posting_order.set_surface(self)
     @posting_orders.push(posting_order)
     @active_posting_order = posting_order
   end
@@ -30,6 +30,6 @@ class Surface
     @posting_orders.delete(posting_order)
   end
 
-  attr_reader :location, :price, :posting_orders, :type, :posting_orders, :active_posting_order, :surface_no, :id
+  attr_reader :location, :price, :type, :posting_orders, :active_posting_order, :surface_no, :id
 
 end

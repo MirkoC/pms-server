@@ -7,7 +7,7 @@ class PostingOrder
         posting_order_hash.values_at(:surface, :issue_date, :state, :posting_order_no, :poster_worker, :id)
   end
 
-  def set_surface_and_location(surface)
+  def set_surface(surface)
     @surface = surface
   end
 

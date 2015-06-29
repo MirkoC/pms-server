@@ -3,9 +3,9 @@
 class SurfaceType
 
   def initialize(surface_type_hash)
-    @type, @id = surface_type_hash.values_at(:type, :id)
+    @name, @id = surface_type_hash.values_at(:name, :id)
   end
 
-  attr_reader :type, :id
+  attr_reader :name, :id
 
 end
