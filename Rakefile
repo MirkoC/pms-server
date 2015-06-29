@@ -37,6 +37,9 @@ namespace :db do
     time = Time.now
     puts 'Seeding into database'
     db = Sequel.connect("postgres://pms:fp123@localhost/pms_#{ENV['ENV']}")
+    DataSeeder.new.seed.each do |cnt|
+      
+    end
     ContactsSeeder.new.seed.each do |cnt|
       db[cnt.table_name].insert(cnt.to_hash.merge({:created_at => time, :updated_at => time}))
     end

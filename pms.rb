@@ -12,10 +12,12 @@ require 'byebug'
 require 'representers'
 require 'sequel'
 require 'roda'
+require 'rom-sql'
+require 'data_access_layer'
 
 db = Sequel.postgres('pms_dev', :user => 'pms', :password => 'fp123', :host => 'localhost')
 
-
+db_rom = ROM.setup('postgres://pms:fp123@localhost/pms_dev')
 class Pms < Roda
   plugin :all_verbs
   plugin :json, :classes=>[Array, Hash, Contact, SurfaceRepresenter]
@@ -63,6 +65,7 @@ class Pms < Roda
             surface = Surface.new(surface_hash = {:location => nil, :price => '100kn', :posting_orders => nil,
                                         :type => SurfaceType.new({:name => 'billboard', :id => nil}),
                                         :surface_no=> 'SRF01', :id => nil})
+            SurfacesRelations.new()
             SurfaceRepresenter.new(surface)
 
           end
