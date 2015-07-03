@@ -1,1 +1,1 @@
-json.(@surface, :surface_number, :price, :image_file_name)
+json.(@surface, :surface_number, :price, :image)

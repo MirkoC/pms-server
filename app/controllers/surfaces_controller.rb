@@ -10,6 +10,7 @@ class SurfacesController < ApplicationController
 
   def create
     @location = Location.find(params[:location_id])
+    Rails.logger.debug "->>>>>>>>>>>>>>>>> + #{params[:image]}"
     @surface = @location.surfaces.create(surface_params)
     render :show
   end
