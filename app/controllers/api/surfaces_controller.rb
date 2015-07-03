@@ -1,4 +1,4 @@
-class SurfacesController < ApplicationController
+class Api::SurfacesController < ApplicationController
 
   def index
 

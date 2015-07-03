@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :locations, except: [:new, :edit] do
+  namespace :api do
+    resources :locations, except: [:new, :edit] do
+      resources :surfaces, except: [:new, :edit]
+    end
+
     resources :surfaces, except: [:new, :edit]
   end
-
-  resources :surfaces, except: [:new, :edit]
 
 
   # The priority is based upon order of creation: first created -> highest priority.
