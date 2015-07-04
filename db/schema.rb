@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150703131757) do
+ActiveRecord::Schema.define(version: 20150704114732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "campaigns", force: :cascade do |t|
+    t.string   "name_of_campaign"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"
@@ -38,9 +46,12 @@ ActiveRecord::Schema.define(version: 20150703131757) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "campaign_id"
   end
 
+  add_index "surfaces", ["campaign_id"], name: "index_surfaces_on_campaign_id", using: :btree
   add_index "surfaces", ["location_id"], name: "index_surfaces_on_location_id", using: :btree
 
+  add_foreign_key "surfaces", "campaigns"
   add_foreign_key "surfaces", "locations"
 end

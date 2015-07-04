@@ -5,6 +5,10 @@ Rails.application.routes.draw do
     end
 
     resources :surfaces, except: [:new, :edit]
+
+    resources :campaigns, except: [:new, :edit] do
+      resources :surfaces, except: [:new, :edit]
+    end
   end
 
 
