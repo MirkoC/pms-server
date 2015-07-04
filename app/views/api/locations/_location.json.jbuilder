@@ -3,5 +3,5 @@ json.(location, :name, :street_address, :city, :state, :region, :country, :posta
 json.surfaces location.surfaces do |surface|
   json.surface_number surface.surface_number
   json.price surface.price
-  json.image_name surface.image_file_name
+  json.image_path surface.image
 end

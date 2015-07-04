@@ -1,0 +1,1 @@
+json.(surface, :id, :surface_number, :price, :image)

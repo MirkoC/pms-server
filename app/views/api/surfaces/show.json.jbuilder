@@ -1,1 +1,1 @@
-json.(@surface, :surface_number, :price, :image)
+json.partial! 'api/surfaces/surface', surface: @surface
