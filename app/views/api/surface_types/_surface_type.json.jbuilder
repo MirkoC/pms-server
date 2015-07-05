@@ -1,0 +1,1 @@
+json.(surface_type, :name, :id)

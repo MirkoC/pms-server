@@ -1,0 +1,1 @@
+json.partial! 'api/surface_types/surface_type', surface_type: @surface_type
