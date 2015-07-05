@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704114732) do
+ActiveRecord::Schema.define(version: 20150705112543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 20150704114732) do
     t.datetime "updated_at",     null: false
   end
 
+  create_table "surface_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "surfaces", force: :cascade do |t|
     t.string   "surface_number"
     t.decimal  "price"
@@ -47,11 +53,14 @@ ActiveRecord::Schema.define(version: 20150704114732) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "campaign_id"
+    t.integer  "surface_type_id"
   end
 
   add_index "surfaces", ["campaign_id"], name: "index_surfaces_on_campaign_id", using: :btree
   add_index "surfaces", ["location_id"], name: "index_surfaces_on_location_id", using: :btree
+  add_index "surfaces", ["surface_type_id"], name: "index_surfaces_on_surface_type_id", using: :btree
 
   add_foreign_key "surfaces", "campaigns"
   add_foreign_key "surfaces", "locations"
+  add_foreign_key "surfaces", "surface_types"
 end
