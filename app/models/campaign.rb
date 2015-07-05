@@ -5,7 +5,7 @@ class Campaign < ActiveRecord::Base
 
   private
   def possible_start_end_time
-    if (start_time.comparable_time > end_time.comparable_time)
+    if (start_time.comparable_time >= end_time.comparable_time)
       errors.add(:end_time, 'end_time can not be before start time')
     end
     if (end_time.comparable_time < Time.now)
