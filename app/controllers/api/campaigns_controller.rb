@@ -27,6 +27,16 @@ class Api::CampaignsController < ApplicationController
     render :show
   end
 
+  def add
+    @surfaces ||= []
+    params[:surface_ids].each do |id|
+      @surfaces.push(Surface.find(id))
+    end
+    @campaign = Campaign.find(params[:campaign_id])
+    @campaign.add_surfaces(@surfaces)
+    render :show
+  end
+
   private
   def campaign_params
     params.permit(:name_of_campaign, :start_time, :end_time)

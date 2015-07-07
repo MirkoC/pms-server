@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
     resources :surfaces, except: [:new, :edit]
 
-    resources :campaigns, except: [:new, :edit]
+    resources :campaigns, except: [:new, :edit] do
+      post 'add'
+    end
 
     resources :surface_types, except: [:new, :edit]
   end
