@@ -1,7 +1,11 @@
 class Api::SurfacesController < ApplicationController
 
   def index
-    @surfaces = Surface.all
+    if (params[:timespan] != nil)
+      @surfaces = Surface.most_popular(params[:timespan].to_i, params[:used_at_least].to_i)
+    else
+      @surfaces = Surface.all
+    end
   end
 
   def show
@@ -29,9 +33,6 @@ class Api::SurfacesController < ApplicationController
 
 
   private
-  def search_params
-
-  end
   def surface_params
     params.permit(:surface_number, :price, :image)
   end
