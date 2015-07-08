@@ -1,11 +1,16 @@
 class Surface < ActiveRecord::Base
+  has_many :rents
   belongs_to :location
-  belongs_to :campaigns
+  has_many :campaigns, :through => :rents
   has_one :surface_types
+
+  def self.connect_with_campaign(campaign_id)
+    Rent.where(campaign_id: campaign_id).map do |rent|
+      Surface.find(rent[:surface_id])
+    end
+  end
 
   has_attached_file :image, :styles => { :medium => '300x300>', :thumb => '100x100>' }, :default_url => '/images/:style/missing.png'
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-
-
 
 end

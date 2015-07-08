@@ -1,5 +1,6 @@
 class Campaign < ActiveRecord::Base
-  has_many :surfaces
+  has_many :rents
+  has_many :surfaces, :through => :rents
   validate :possible_start_end_time
 
 
