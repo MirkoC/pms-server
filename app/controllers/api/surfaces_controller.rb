@@ -27,7 +27,11 @@ class Api::SurfacesController < ApplicationController
     render :show
   end
 
+
   private
+  def search_params
+
+  end
   def surface_params
     params.permit(:surface_number, :price, :image)
   end
