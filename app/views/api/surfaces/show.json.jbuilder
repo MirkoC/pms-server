@@ -1,0 +1,1 @@
+json.partial! 'api/surfaces/surface', surface: @surface
