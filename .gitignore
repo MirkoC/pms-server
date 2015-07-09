@@ -13,5 +13,4 @@ client/src/bower_components/
 .idea
 .bundle/ruby/
 
-
-log/development.log
+log/
