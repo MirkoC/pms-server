@@ -4,9 +4,11 @@ class Surface < ActiveRecord::Base
   has_many :campaigns, :through => :rents
   has_one :surface_types
 
+
+  #surfaces?timespan='int sth'&used_at_least='int sth'
   def self.most_popular(timespan, used)
     Surface.select('surfaces.*, count(*) as count').joins(:rents).where('rents.start_time > ?', timespan.month.ago)
-        .group(:id).having('count(*) > ?', used)
+        .group(:id).having('count(*) >= ?', used).order(count: :desc)
   end
 
   def used

@@ -27,6 +27,7 @@ class Api::CampaignsController < ApplicationController
     render :show
   end
 
+  # ovo treba mijenjati, previše puta ide u bazu
   def add
     @surfaces ||= []
     params[:surface_ids].each do |id|

@@ -7,7 +7,6 @@ class Campaign < ActiveRecord::Base
   def add_surfaces(surfaces)
     surfaces.each do |surface|
       Rent.new(rent_params(surface)).save
-      #surface.update(campaign_id: self[:id])
     end
   end
 
@@ -16,6 +15,7 @@ class Campaign < ActiveRecord::Base
     {:rent_number => self[:name_of_campaign] + surface[:surface_number].scan(/\d/).join(''), :rent_type => 'campaign',
      :start_time => self[:start_time], :end_time => self[:end_time], :campaign_id => self[:id], :surface_id => surface[:id]}
   end
+
   def possible_start_end_time
     if (start_time.utc >= end_time.utc)
       errors.add(:end_time, 'end_time can not be before start time')
