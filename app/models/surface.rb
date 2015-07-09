@@ -5,7 +5,8 @@ class Surface < ActiveRecord::Base
   has_one :surface_types
 
   def self.most_popular(timespan, used)
-    Surface.joins(:rents).where('start_time > ?', (Time.now - timespan.month)).group(:id).having('COUNT(surface_number) > ?', used)
+    Surface.select('surfaces.*, count(*) as count').joins(:rents).where('rents.start_time > ?', timespan.month.ago)
+        .group(:id).having('count(*) > ?', used)
   end
 
   def used
