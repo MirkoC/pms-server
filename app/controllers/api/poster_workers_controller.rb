@@ -1,5 +1,7 @@
 class Api::PosterWorkersController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @poster_workers = PosterWorker.all
   end

@@ -1,5 +1,7 @@
 class Api::PostingOrdersController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @posting_orders = PostingOrder.all
   end

@@ -1,5 +1,7 @@
 class Api::SurfacesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     if (params[:timespan] != nil)
       @surfaces = Surface.most_popular(params[:timespan].to_i, params[:used_at_least].to_i)

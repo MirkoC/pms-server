@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   namespace :api do
     resources :locations, except: [:new, :edit] do
       resources :surfaces, except: [:new, :edit]

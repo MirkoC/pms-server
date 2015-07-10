@@ -1,5 +1,7 @@
 class Api::SurfaceTypesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @surface_types = SurfaceType.all
   end
