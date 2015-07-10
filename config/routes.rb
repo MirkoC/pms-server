@@ -13,6 +13,9 @@ Rails.application.routes.draw do
     resources :surface_types, except: [:new, :edit]
 
     resources :poster_workers, except: [:new, :edit]
+
+    resources :posting_orders, except: [:new, :edit]
+
   end
 
 

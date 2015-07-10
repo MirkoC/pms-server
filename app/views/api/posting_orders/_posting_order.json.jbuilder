@@ -1,0 +1,1 @@
+json.(posting_order, :issue_date, :state, :code, :id, :surface_id, :poster_worker_id)

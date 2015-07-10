@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710132456) do
+ActiveRecord::Schema.define(version: 20150710140848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,19 @@ ActiveRecord::Schema.define(version: 20150710132456) do
     t.datetime "updated_at",     null: false
   end
 
+  create_table "posting_orders", force: :cascade do |t|
+    t.datetime "issue_date"
+    t.string   "state"
+    t.string   "code"
+    t.integer  "surface_id"
+    t.integer  "poster_worker_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "posting_orders", ["poster_worker_id"], name: "index_posting_orders_on_poster_worker_id", using: :btree
+  add_index "posting_orders", ["surface_id"], name: "index_posting_orders_on_surface_id", using: :btree
+
   create_table "rents", force: :cascade do |t|
     t.string   "rent_number"
     t.string   "rent_type"
@@ -85,6 +98,8 @@ ActiveRecord::Schema.define(version: 20150710132456) do
   add_index "surfaces", ["location_id"], name: "index_surfaces_on_location_id", using: :btree
   add_index "surfaces", ["surface_type_id"], name: "index_surfaces_on_surface_type_id", using: :btree
 
+  add_foreign_key "posting_orders", "poster_workers"
+  add_foreign_key "posting_orders", "surfaces"
   add_foreign_key "rents", "campaigns"
   add_foreign_key "rents", "surfaces"
   add_foreign_key "surfaces", "locations"
