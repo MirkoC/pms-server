@@ -20,11 +20,5 @@ class Campaign < ActiveRecord::Base
     if (start_time.utc >= end_time.utc)
       errors.add(:end_time, 'end_time can not be before start time')
     end
-    if (end_time.utc < Time.now)
-      errors.add(:end_time, 'end_time can not be before today')
-    end
-    if (start_time.utc < Time.now)
-      errors.add(:start_time, 'start_time can not be before today')
-    end
   end
 end
