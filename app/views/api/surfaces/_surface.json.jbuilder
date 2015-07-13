@@ -1,4 +1,4 @@
-json.(surface, :id, :surface_number, :price, :image, :count)
+json.(surface, :id, :surface_number, :price, :image)
 
 
 json.campaigns surface.campaigns do |campaign|
