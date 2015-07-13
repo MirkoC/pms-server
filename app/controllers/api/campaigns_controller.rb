@@ -1,4 +1,4 @@
-class Api::CampaignsController < ApplicationController
+class Api::CampaignsController < Api::BaseController
 
   before_action :authenticate_user!
 

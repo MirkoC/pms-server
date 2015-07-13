@@ -1,4 +1,4 @@
-class Api::PosterWorkersController < ApplicationController
+class Api::PosterWorkersController < Api::BaseController
 
   before_action :authenticate_user!
 

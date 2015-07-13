@@ -1,4 +1,4 @@
-class Api::PostingOrdersController < ApplicationController
+class Api::PostingOrdersController < Api::BaseController
 
   before_action :authenticate_user!
 

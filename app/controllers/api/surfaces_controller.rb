@@ -1,4 +1,4 @@
-class Api::SurfacesController < ApplicationController
+class Api::SurfacesController < Api::BaseController
 
   before_action :authenticate_user!
 
