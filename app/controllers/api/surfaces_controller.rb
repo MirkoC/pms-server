@@ -1,6 +1,6 @@
 class Api::SurfacesController < Api::BaseController
 
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   def index
     if (params[:timespan] != nil)

@@ -1,6 +1,6 @@
 class Api::CampaignsController < Api::BaseController
 
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   def index
     @campaigns = Campaign.includes(:surfaces).all

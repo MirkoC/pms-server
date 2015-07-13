@@ -1,6 +1,6 @@
 class Api::LocationsController < Api::BaseController
 
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   def index
     @locations = Location.includes(:surfaces).all
