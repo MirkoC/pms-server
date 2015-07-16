@@ -37,7 +37,7 @@ class SurfacesController < ApplicationController
 
   private
   def surface_params
-    params.permit(:surface_number, :price, :image)
+    params.permit(:code, :price, :image)
   end
 
 end
