@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+# font awesome
+gem 'font-awesome-rails'
 # bootstrap
 gem 'bootstrap-sass', '~> 3.3.5'
 # Login auth

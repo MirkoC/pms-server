@@ -4,13 +4,16 @@ class SurfacesController < ApplicationController
     if (params[:timespan] != nil)
       @surfaces = Surface.most_popular(params[:timespan].to_i, params[:used_at_least].to_i)
     else
-      @surfaces = Surface.all
+      @surfaces = Surface.includes(:surface_type).all
     end
   end
 
   def show
     @surface = Surface.find(params[:id])
     render :show
+  end
+
+  def new
   end
 
   def create
@@ -36,4 +39,5 @@ class SurfacesController < ApplicationController
   def surface_params
     params.permit(:surface_number, :price, :image)
   end
+
 end

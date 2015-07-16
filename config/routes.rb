@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'surfaces/index'
+
+  root 'home#index'
 
   devise_for :users
   namespace :api, :defaults => {:format => :json}  do

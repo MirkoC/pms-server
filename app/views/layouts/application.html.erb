@@ -8,13 +8,26 @@
 </head>
 <body>
 
-<div class="content">
-  <%= yield %>
+<div class="page-header text-center">
+  <h1>Poster management service</h1>
 </div>
 
-<div class="sidebar">
-  <%= yield :sidebar %>
+<div class="col-sm-1">
+  <div class="span3 bs-docs-sidebar">
+    <ul class="nav nav-list bs-docs-sidenav affix">
+      <li><%= link_to root_path do%><i class="glyphicon glyphicon-home"> Home </i> <% end %></li>
+      <li><%= link_to surfaces_path do%><i class="glyphicon glyphicon-object-align-vertical"> Location Manager </i> <% end %></li>
+      <li><%= link_to surfaces_path do%><i class="glyphicon glyphicon-picture"> Surface Manager </i> <% end %></li>
+    </ul>
+  </div>
 </div>
+
+<div class="col-sm-11">
+  <div class="container">
+    <%= yield %>
+  </div>
+</div>
+
 
 </body>
 </html>

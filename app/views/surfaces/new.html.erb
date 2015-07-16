@@ -1,0 +1,25 @@
+<h2>Add new surface</h2>
+
+<div class="col-sm-4">
+  <%= form_for :surface do |s| %>
+      <p>
+        <%= s.label :code %><br>
+        <%= s.text_field :code, class: 'form-control' %>
+      </p>
+
+      <p>
+        <%= s.label :price %><br>
+        <%= s.number_field :price, class: 'form-control' %>
+      </p>
+
+      <p>
+        <%= s.label :type %><br>
+        <%= s.collection_select :type, SurfaceType.order(:name), :id, :name, {include_blank: true}, {class: 'btn btn-default'} %>
+      </p>
+
+      <p>
+        <%= s.submit 'Save', type: 'button', class: 'btn btn-primary' %>
+      </p>
+  <% end %>
+</div>
+
