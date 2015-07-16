@@ -2,9 +2,7 @@ source 'https://rubygems.org'
 
 
 # bootstrap
-gem 'bootstrap'
-gem 'bootstrap-sass', '~> 3.2.0'
-gem 'autoprefixer-rails'
+gem 'bootstrap-sass', '~> 3.3.5'
 # Login auth
 gem 'devise'
 # Uploading images
