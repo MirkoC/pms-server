@@ -3,7 +3,7 @@ class Surface < ActiveRecord::Base
   has_many :rents
   belongs_to :location
   has_many :campaigns, :through => :rents
-  has_one :surface_type
+  belongs_to :surface_type
 
 
   #surfaces?timespan='int sth'&used_at_least='int sth'

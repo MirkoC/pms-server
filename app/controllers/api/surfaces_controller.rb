@@ -6,7 +6,7 @@ class Api::SurfacesController < Api::BaseController
     if (params[:timespan] != nil)
       @surfaces = Surface.most_popular(params[:timespan].to_i, params[:used_at_least].to_i)
     else
-      @surfaces = Surface.includes(:surface_types).all
+      @surfaces = Surface.includes(:surface_type).all
     end
   end
 

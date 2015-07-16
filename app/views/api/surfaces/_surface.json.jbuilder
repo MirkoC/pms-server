@@ -1,5 +1,5 @@
 json.(surface, :id, :code, :price, :image)
-
+json.type surface.surface_type.name
 
 json.campaigns surface.campaigns do |campaign|
   json.name campaign.name_of_campaign
