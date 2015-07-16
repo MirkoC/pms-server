@@ -1,0 +1,14 @@
+<h1> Surfaces manager</h1>
+
+
+<table>
+<% @surfaces.each do |surface| %>
+    <tr>
+      <td><%= surface.surface_number %></td>
+      <td><%= surface.price %></td>
+    </tr>
+<% end %>
+</table>
+
+
+<button type="button" class="btn btn-success">Success</button>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'surfaces/index'
+
   devise_for :users
   namespace :api, :defaults => {:format => :json}  do
     resources :locations, except: [:new, :edit] do
@@ -18,6 +20,8 @@ Rails.application.routes.draw do
     resources :posting_orders, except: [:new, :edit]
 
   end
+
+  resources :surfaces
 
 
   # The priority is based upon order of creation: first created -> highest priority.
