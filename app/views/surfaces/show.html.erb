@@ -1,0 +1,18 @@
+<table class="table table-hover">
+  <tr>
+    <th>Code</th>
+    <th>Price</th>
+    <th>Type</th>
+    <th>Image</th>
+    <th>Location</th>
+  </tr>
+
+  <tr>
+    <td><%= @surface.code %></td>
+    <td><%= @surface.price %></td>
+    <td><%= @surface.surface_type.name %></td>
+    <td><%= image_tag(@surface.image(:medium)) %></td>
+    <td><%= Location.find(@surface[:location_id]).name %></td>
+  </tr>
+
+</table>

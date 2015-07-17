@@ -11,6 +11,7 @@
     <th>Price</th>
     <th>Type</th>
     <th>Image</th>
+    <th>Location</th>
   </tr>
 
   <% @surfaces.each do |surface| %>
@@ -18,10 +19,11 @@
         <td><%= surface.code %></td>
         <td><%= surface.price %></td>
         <td><%= surface.surface_type.name %></td>
-        <td><%= surface.image %></td>
-        <td><button class="btn btn-info"> Details </button></td>
-        <td><button class="btn btn-warning"> Edit </button></td>
-        <td><button class="btn btn-danger"> Delete </button></td>
+        <td><%= image_tag(surface.image(:thumb)) %></td>
+        <td><%= Location.find(surface[:location_id]).name %></td>
+        <td><%=link_to 'Details', surface_path(surface), class: 'btn btn-info' %></td>
+        <td><%=link_to 'Edit', edit_surface_path(surface), class: 'btn btn-warning' %></td>
+        <td><%=link_to 'Delete', surface_path(surface), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
       </tr>
   <% end %>
 </table>

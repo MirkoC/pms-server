@@ -1,7 +1,7 @@
-<h2>Add new surface</h2>
+<h2>Edit surface</h2>
 
 <div class="col-sm-4">
-  <%= form_for :surface, url: surfaces_path do |s| %>
+  <%= form_for :surface, url: surface_path(@surface), :method => :patch do |s| %>
       <p>
         <%= s.label :code %><br>
         <%= s.text_field :code, class: 'form-control' %>
@@ -30,4 +30,3 @@
       </p>
   <% end %>
 </div>
-

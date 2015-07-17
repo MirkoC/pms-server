@@ -10,16 +10,22 @@ class SurfacesController < ApplicationController
 
   def show
     @surface = Surface.find(params[:id])
-    render :show
   end
 
   def new
   end
 
   def create
-    @location = Location.find(params[:location_id])
-    @surface = @location.surfaces.create(surface_params)
-    render :show
+    @surface = Surface.new(surface_params)
+    if @surface.save
+      redirect_to @surface
+    else
+      render 'new'
+    end
+  end
+
+  def edit
+    @surface = Surface.find(params[:id])
   end
 
   def update
@@ -37,7 +43,7 @@ class SurfacesController < ApplicationController
 
   private
   def surface_params
-    params.permit(:code, :price, :image)
+    params.require(:surface).permit(:code, :price, :image, :location_id, :surface_type_id)
   end
 
 end
