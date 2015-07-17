@@ -1,0 +1,29 @@
+<h2>Surfaces Manager</h2>
+
+<div class="row">
+  <%= link_to 'New surface', new_surface_path, type: 'button', class: 'btn btn-success pull-right' %>
+</div>
+
+
+<table class="table table-hover">
+  <tr>
+    <th>Code</th>
+    <th>Price</th>
+    <th>Type</th>
+    <th>Image</th>
+  </tr>
+
+  <% @surfaces.each do |surface| %>
+      <tr>
+        <td><%= surface.code %></td>
+        <td><%= surface.price %></td>
+        <td><%= surface.surface_type.name %></td>
+        <td><%= surface.image %></td>
+        <td><button class="btn btn-info"> Details </button></td>
+        <td><button class="btn btn-warning"> Edit </button></td>
+        <td><button class="btn btn-danger"> Delete </button></td>
+      </tr>
+  <% end %>
+</table>
+
+

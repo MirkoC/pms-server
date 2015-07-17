@@ -1,0 +1,1 @@
+json.partial! 'api/poster_workers/poster_worker', poster_worker: @poster_worker
