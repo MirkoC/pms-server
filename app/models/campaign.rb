@@ -12,7 +12,7 @@ class Campaign < ActiveRecord::Base
 
   private
   def rent_params(surface)
-    {:rent_number => self[:name_of_campaign] + surface[:surface_number].scan(/\d/).join(''), :rent_type => 'campaign',
+    {:rent_number => self[:name_of_campaign] + surface[:code].scan(/\d/).join(''), :rent_type => 'campaign',
      :start_time => self[:start_time], :end_time => self[:end_time], :campaign_id => self[:id], :surface_id => surface[:id]}
   end
 

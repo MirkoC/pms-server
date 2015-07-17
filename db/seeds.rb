@@ -18,11 +18,11 @@ location2 = Location.create({:name => 'Druga lokacija', :street_address => 'Ronj
 surface_type1 = SurfaceType.create({:name => 'billboard'})
 surface_type2 = SurfaceType.create({:name => 'city_light'})
 
-surface1 = Surface.create({:surface_number => 'SRF01', :price => 100, :location_id => location1[:id], :surface_type_id => surface_type1[:id]})
-surface2 = Surface.create({:surface_number => 'SRF02', :price => 500, :location_id => location1[:id], :surface_type_id => surface_type2[:id]})
+surface1 = Surface.create({:code => 'SRF01', :price => 100, :location_id => location1[:id], :surface_type_id => surface_type1[:id]})
+surface2 = Surface.create({:code => 'SRF02', :price => 500, :location_id => location1[:id], :surface_type_id => surface_type2[:id]})
 
-surface3 = Surface.create({:surface_number => 'SRF03', :price => 300, :location_id => location2[:id], :surface_type_id => surface_type1[:id]})
-surface4 = Surface.create({:surface_number => 'SRF04', :price => 700, :location_id => location2[:id], :surface_type_id => surface_type2[:id]})
+surface3 = Surface.create({:code => 'SRF03', :price => 300, :location_id => location2[:id], :surface_type_id => surface_type1[:id]})
+surface4 = Surface.create({:code => 'SRF04', :price => 700, :location_id => location2[:id], :surface_type_id => surface_type2[:id]})
 
 campaign1 = Campaign.create({:name_of_campaign => 'Erste kampanja', :start_time => '2015-07-03 13:59:59', :end_time => '2015-07-17 13:59:59'})
 campaign2 = Campaign.create({:name_of_campaign => 'Tele2 kampanja', :start_time => '2015-08-14 13:59:59', :end_time => '2015-08-28 13:59:59'})
