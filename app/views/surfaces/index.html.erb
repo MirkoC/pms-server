@@ -1,11 +1,13 @@
-<h2>Surfaces Manager</h2>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <span style="color:purple; font-size: 20pt">Surfaces manager</span>
+    <%= link_to 'New surface', new_surface_path, class: 'btn btn-success pull-right' %>
 
-<div class="row">
-  <%= link_to 'New surface', new_surface_path, type: 'button', class: 'btn btn-success pull-right' %>
-</div>
+  </div>
 
 
-<table class="table table-hover">
+
+  <table class="table table-hover">
   <tr>
     <th>Code</th>
     <th>Price</th>
@@ -21,11 +23,13 @@
         <td><%= surface.surface_type.name %></td>
         <td><%= image_tag(surface.image(:thumb)) %></td>
         <td><%= Location.find(surface[:location_id]).name %></td>
-        <td><%=link_to 'Details', surface_path(surface), class: 'btn btn-info' %></td>
-        <td><%=link_to 'Edit', edit_surface_path(surface), class: 'btn btn-warning' %></td>
-        <td><%=link_to 'Delete', surface_path(surface), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <td><%=link_to 'Details', surface_path(surface), class: 'btn btn-info btn-xs' %></td>
+        <td><%=link_to 'Edit', edit_surface_path(surface), class: 'btn btn-warning btn-xs' %></td>
+        <td><%=link_to 'Delete', surface_path(surface), method: :delete, data: { confirm: 'Are you sure?' },
+                       class: 'btn btn-danger btn-xs' %></td>
       </tr>
   <% end %>
 </table>
+</div>
 
 

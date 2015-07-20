@@ -1,18 +1,31 @@
-<table class="table table-hover">
-  <tr>
-    <th>Code</th>
-    <th>Price</th>
-    <th>Type</th>
-    <th>Image</th>
-    <th>Location</th>
-  </tr>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    Surface: <%= @surface.code %>
+    <%=link_to 'Edit', edit_surface_path(@surface), class: 'btn btn-warning btn-xs' %>
+    <%=link_to 'Delete', surface_path(@surface), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+    <%=link_to 'Back to surfaces', surfaces_path, class: 'btn btn-primary btn-xs pull-right' %>
 
-  <tr>
-    <td><%= @surface.code %></td>
-    <td><%= @surface.price %></td>
-    <td><%= @surface.surface_type.name %></td>
-    <td><%= image_tag(@surface.image(:medium)) %></td>
-    <td><%= Location.find(@surface[:location_id]).name %></td>
-  </tr>
+  </div>
+  <div class="panel-body">
+    <p>Description: Lorem ipsum dolor sit amet, sea te animal voluptaria. Cu epicuri evertitur inciderint mel. Cu qui dolorem molestiae. Vivendo lobortis assueverit usu et.</p>
+  </div>
 
-</table>
+  <table class="table table-hover">
+    <tr>
+      <th>Code</th>
+      <th>Price</th>
+      <th>Type</th>
+      <th>Image</th>
+      <th>Location</th>
+    </tr>
+
+    <tr>
+      <td><%= @surface.code %></td>
+      <td><%= @surface.price %></td>
+      <td><%= @surface.surface_type.name %></td>
+      <td><%= image_tag(@surface.image(:medium)) %></td>
+      <td><%= Location.find(@surface[:location_id]).name %></td>
+    </tr>
+  </table>
+
+</div>

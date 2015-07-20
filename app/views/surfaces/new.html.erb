@@ -1,33 +1,39 @@
-<h2>Add new surface</h2>
-
 <div class="col-sm-4">
-  <%= form_for :surface, url: surfaces_path do |s| %>
-      <p>
-        <%= s.label :code %><br>
-        <%= s.text_field :code, class: 'form-control' %>
-      </p>
 
-      <p>
-        <%= s.label :price %><br>
-        <%= s.number_field :price, class: 'form-control' %>
-      </p>
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      New surface
+      <%=link_to 'Back to surfaces', surfaces_path, class: 'btn btn-primary btn-xs pull-right', id:'surfaces_form' %>
+    </div>
+    <%= form_for :surface, url: surfaces_path do |s| %>
+        <p>
+          <%= s.label :code %><br>
+          <%= s.text_field :code, class: 'form-control' %>
+        </p>
 
-      <p>
-        <%= s.label :type %><br>
-        <%= s.collection_select :surface_type_id, SurfaceType.order(:name), :id, :name, {include_blank: true}, {class: 'btn btn-default'} %>
-      </p>
-      <p>
-        <%= s.label :location %><br>
-        <%= s.collection_select :location_id, Location.order(:name), :id, :name, {include_blank: true}, {class: 'btn btn-default'} %>
-      </p>
-      <p>
-        <%= s.label :image %>
-        <%= s.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: 'btn btn-default' %>
-      </p>
-      </br>
-      <p>
-        <%= s.submit 'Save', class: 'btn btn-primary' %>
-      </p>
-  <% end %>
+        <p>
+          <%= s.label :price %><br>
+          <%= s.number_field :price, class: 'form-control' %>
+        </p>
+
+        <p>
+          <%= s.label :type %><br>
+          <%= s.collection_select :surface_type_id, SurfaceType.order(:name), :id, :name, {include_blank: true}, {class: 'btn btn-default'} %>
+        </p>
+        <p>
+          <%= s.label :location %><br>
+          <%= s.collection_select :location_id, Location.order(:name), :id, :name, {include_blank: true}, {class: 'btn btn-default'} %>
+        </p>
+        <p>
+          <%= s.label :image %>
+          <%= s.file_field :image, accept: 'image/png,image/gif,image/jpeg', class: 'btn btn-default' %>
+        </p>
+        </br>
+        <p>
+          <%= s.submit 'Save', class: 'btn btn-primary' %>
+        </p>
+    <% end %>
+  </div>
+
 </div>
 
