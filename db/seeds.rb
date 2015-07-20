@@ -24,8 +24,8 @@ surface2 = Surface.create({:code => 'SRF02', :price => 500, :location_id => loca
 surface3 = Surface.create({:code => 'SRF03', :price => 300, :location_id => location2[:id], :surface_type_id => surface_type1[:id]})
 surface4 = Surface.create({:code => 'SRF04', :price => 700, :location_id => location2[:id], :surface_type_id => surface_type2[:id]})
 
-campaign1 = Campaign.create({:name_of_campaign => 'Erste kampanja', :start_time => '2015-07-03 13:59:59', :end_time => '2015-07-17 13:59:59'})
-campaign2 = Campaign.create({:name_of_campaign => 'Tele2 kampanja', :start_time => '2015-08-14 13:59:59', :end_time => '2015-08-28 13:59:59'})
+campaign1 = Campaign.create({:name => 'Erste kampanja', :start_time => '2015-07-03 13:59:59', :end_time => '2015-07-17 13:59:59'})
+campaign2 = Campaign.create({:name => 'Tele2 kampanja', :start_time => '2015-08-14 13:59:59', :end_time => '2015-08-28 13:59:59'})
 
 campaign1.add_surfaces([surface1, surface4])
 campaign2.add_surfaces([surface1, surface2, surface3])

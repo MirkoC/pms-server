@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :surfaces
   resources :locations
+  resources :campaigns
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,25 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    Campaign: <%= @campaign.name %>
+    <%=link_to 'Edit', edit_campaign_path(@campaign), class: 'btn btn-warning btn-xs' %>
+    <%=link_to 'Delete', campaign_path(@campaign), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+    <%=link_to 'Back to campaigns', campaigns_path, class: 'btn btn-primary btn-xs pull-right' %>
+
+  </div>
+  <div class="panel-body">
+    <p>Description: Lorem ipsum dolor sit amet, sea te animal voluptaria. Cu epicuri evertitur inciderint mel. Cu qui dolorem molestiae. Vivendo lobortis assueverit usu et.</p>
+  </div>
+
+  <table class="table table-hover">
+    <tr>
+      <th>Start time</th>
+      <th>End time</th>
+    </tr>
+
+    <tr>
+      <td><%= @campaign.start_time %></td>
+      <td><%= @campaign.end_time %></td>
+    </tr>
+  </table>
+
+</div>
