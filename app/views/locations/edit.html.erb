@@ -1,0 +1,52 @@
+<div class="col-sm-4">
+
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      Edit location: <%= @location.name %>
+      <%=link_to 'Delete', location_path(@location), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+      <%=link_to 'Back to locations', locations_path, class: 'btn btn-primary btn-xs pull-right' %>
+    </div>
+
+    <%= form_for :location, url: location_path(@location), :method => :patch do |l| %>
+        <p>
+          <%= l.label :name %><br>
+          <%= l.text_field :name, class: 'form-control' %>
+        </p>
+
+        <p>
+          <%= l.label :street_address %><br>
+          <%= l.text_field :street_address, class: 'form-control' %>
+        </p>
+
+        <p>
+          <%= l.label :city %><br>
+          <%= l.text_field :city, class: 'form-control' %>
+        </p>
+
+        <p>
+          <%= l.label :state %><br>
+          <%= l.text_field :state, class: 'form-control' %>
+        </p>
+
+        <p>
+          <%= l.label :region %><br>
+          <%= l.text_field :region, class: 'form-control' %>
+        </p>
+
+        <p>
+          <%= l.label :country %><br>
+          <%= l.text_field :country, class: 'form-control' %>
+        </p>
+
+        <p>
+          <%= l.label :postal_code %><br>
+          <%= l.text_field :postal_code, class: 'form-control' %>
+        </p>
+
+    <% end %>
+
+  </div>
+
+
+
+</div>

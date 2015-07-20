@@ -11,17 +11,23 @@
 <div class="page-header text-center">
   <h1>Poster management service</h1>
 </div>
+<% @links = [:home => ['root_path', 'glyphicon glyphicon-home']]# , 'location manager', 'surface manager', 'campaign manager', 'poster workers'] %>
 
 <div class="col-sm-2">
-  <div class="span3 bs-docs-sidebar">
-    <ul class="nav nav-list bs-docs-sidenav">
-      <li><%= link_to root_path, {class: 'btn btn-default'} do%><i class="glyphicon glyphicon-home"> Home </i> <% end %></li>
-      <li><%= link_to root_path, {class: 'btn btn-default'} do%><i class="glyphicon glyphicon-object-align-vertical"> Location Manager </i> <% end %></li>
-      <li><%= link_to surfaces_path, {class: 'btn btn-default'} do%><i class="glyphicon glyphicon-picture"> Surface Manager </i> <% end %></li>
-      <li><%= link_to root_path, {class: 'btn btn-default'} do%><i class="glyphicon glyphicon-pushpin"> Campaign Manager </i> <% end %></li>
-      <li><%= link_to root_path, {class: 'btn btn-default'} do%><i class="fa fa-users"> Poster Workers </i> <% end %></li>
-    </ul>
-  </div>
+  <ul class="nav nav-pills nav-stacked btn-group-vertical" role="group">
+    <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to root_path, {class: 'btn btn-default'} do%>
+          <i class="fa fa-home"> Home </i> <% end %></li>
+    <li class="<%= 'active' if current_page?(locations_path) %>"><%= link_to locations_path, {class: 'btn btn-default'} do%>
+          <i class="fa fa-tree"> Location Manager </i> <% end %></li>
+    <li class="<%= 'active' if current_page?(surfaces_path) %>"><%= link_to surfaces_path, {class: 'btn btn-default'} do%>
+          <i class="fa fa-picture-o"> Surface Manager </i> <% end %></li>
+    <li class="<%#= 'active' if current_page?(root_path) %>"><%= link_to root_path, {class: 'btn btn-default'} do%>
+          <i class="fa fa-pencil"> Campaign Manager </i> <% end %></li>
+    <li class="<%#= 'active' if current_page?(root_path) %>"><%= link_to root_path, {class: 'btn btn-default'} do%>
+          <i class="fa fa-paper-plane"> Posting orders </i> <% end %></li>
+    <li class="<%#= 'active' if current_page?(root_path) %>"><%= link_to root_path, {class: 'btn btn-default'} do%>
+          <i class="fa fa-users"> Poster Workers </i> <% end %></li>
+  </ul>
 </div>
 
 <div class="col-sm-10">
